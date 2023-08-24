@@ -1,0 +1,7 @@
+import webbrowser
+def google():
+    webbrowser.open("www.google.com")
+def facebook():
+    webbrowser.open("www.facebook.com")
+def python():
+    webbrowser.open("www.w3schools.com")
