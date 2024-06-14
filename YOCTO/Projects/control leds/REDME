@@ -1,0 +1,199 @@
+Steps:
+1-
+$ git clone https://github.com/openembedded/meta-openembedded.git
+. oe-init-build-env build-raspi4
+bitbake-layers add-layers ../meta-openembedded/meta-python
+
+2-creat our machine and distro.
+at the first creat our meta layer and add it to bblayers ( bitbake-layers add-layers ../meta-embabi )
+$cd ../meta-embabi/conf/ 
+$mkdir machine
+$cd machine
+$touch embabi-machine.conf
+then add MACHINE_FEATURES -> {
+  
+MACHINEOVERRIDES =. "raspberrypi4:${machine}"
+require conf/machine/raspberrypi4.conf
+ENABLE_W1 = "1"
+ENABLE_UART = "1"
+ENABLE_I2C = "1"
+MACHINE_FEATURES += " wifi"
+  }
+
+then creat our distro 
+$cd ../meta-embabi/conf/ 
+$mkdir distro
+$touch mydistro.conf
+then add DISTRO_FEATURES -> {
+  
+require conf/distro/poky.conf
+
+DISTRO = "mydistro"
+DISTRO_NAME = "embabi distro"
+DISTRO_VERSION = "1.0"
+hostname:pn-base-files = "embabi_1"
+DISTRO_FEATURES:remove = " pcmcia pci 3g"
+INIT_MANAGER = "systemd"
+
+PARALLEL_MAKE = "-j 6"
+BB_NUMBER_PARSE_THREADS = "6"
+  }
+
+
+3- add our resipe for gui :-
+$cd meta-embabi
+$mkdir recipes-gui > hello > guiled.bb {
+  SUMMARY = " Python Script"
+LICENSE = "CLOSED"
+SRC_URI = "file://led.py"
+
+S = "${WORKDIR}"
+
+do_install() {
+    bbwarn "do_install is running"
+    install -d ${D}/usr/bin
+    install -m 0755 ${S}/led.py ${D}/usr/bin/led.py
+}
+
+FILES_${PN} += "/usr/bin/led.py"
+}
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+$mkdir /meta-embabi/recipes-gui/hello/files/gui.py {
+  
+
+import os
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
+
+LED_PIN1 = 18
+LED_PIN2 = 23
+LED_PIN3 = 24  # New LED pin
+
+def gpio_setup(pin):
+    gpio_path = f"/sys/class/gpio/gpio{pin}"
+    if not os.path.exists(gpio_path):
+        with open("/sys/class/gpio/export", "w") as f:
+            f.write(str(pin))
+    with open(f"{gpio_path}/direction", "w") as f:
+        f.write("out")
+
+def gpio_cleanup(pin):
+    gpio_path = f"/sys/class/gpio/gpio{pin}"
+    if os.path.exists(gpio_path):
+        with open("/sys/class/gpio/unexport", "w") as f:
+            f.write(str(pin))
+
+def gpio_write(pin, value):
+    gpio_path = f"/sys/class/gpio/gpio{pin}/value"
+    with open(gpio_path, "w") as f:
+        f.write("1" if value else "0")
+
+gpio_setup(LED_PIN1)
+gpio_setup(LED_PIN2)
+gpio_setup(LED_PIN3)  # Setup new LED pin
+
+class MyGrid(GridLayout):
+    def __init__(self, **kwargs):
+        super(MyGrid, self).__init__(**kwargs)
+        self.cols = 1
+
+        self.led_status1 = False
+        self.led_status2 = False
+        self.led_status3 = False
+
+        self.button1 = Button(text="Toggle LED 1")
+        self.button1.bind(on_press=self.toggle_led1)
+        self.add_widget(self.button1)
+
+        self.button2 = Button(text="Toggle LED 2")
+        self.button2.bind(on_press=self.toggle_led2)
+        self.add_widget(self.button2)
+
+        self.button3 = Button(text="Toggle LED 3")
+        self.button3.bind(on_press=self.toggle_led3)
+        self.add_widget(self.button3)
+
+    def toggle_led1(self, instance):
+        self.led_status1 = not self.led_status1
+        gpio_write(LED_PIN1, self.led_status1)
+        print(f"LED 1 {'on' if self.led_status1 else 'off'}")
+
+    def toggle_led2(self, instance):
+        self.led_status2 = not self.led_status2
+        gpio_write(LED_PIN2, self.led_status2)
+        print(f"LED 2 {'on' if self.led_status2 else 'off'}")
+
+    def toggle_led3(self, instance):
+        self.led_status3 = not self.led_status3
+        gpio_write(LED_PIN3, self.led_status3)
+        print(f"LED 3 {'on' if self.led_status3 else 'off'}")
+
+class MyApp(App):
+    def build(self):
+        return MyGrid()
+
+    def on_stop(self):
+        gpio_cleanup(LED_PIN1)
+        gpio_cleanup(LED_PIN2)
+        gpio_cleanup(LED_PIN3)
+
+if __name__ == "__main__":
+    MyApp().run()
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+creat our image embabi-sato ->{
+$touch /home/jumbos/repo/poky/meta-embabi/recipes-core/images/embabi-sato.bb ->{
+  
+  include recipes-sato/images/core-image-sato.bb
+
+
+# Example core-image-sato.bb recipe modifications
+
+# Ensure Python 3 and pip are installed
+IMAGE_INSTALL += " python3 python3-pip"
+
+# Add Tcl and Tk for Tkinter support
+IMAGE_INSTALL += " tcl tk"
+
+IMAGE_INSTALL += " python3-numpy"
+IMAGE_INSTALL += " python3-kivy"
+# Add additional tools and utilities
+IMAGE_INSTALL += " strace cmake"
+
+# Add SSH server (Dropbear)
+IMAGE_FEATURES += " ssh-server-dropbear" 
+
+# Add 'hello-c' example application
+IMAGE_INSTALL += " guiled"
+
+# Add SDK tools
+IMAGE_FEATURES += " tools-sdk"
+
+# Add X11 support
+IMAGE_FEATURES += " x11"
+
+# Install network tools
+IMAGE_INSTALL += " net-tools iproute2"
+
+  }
+
+
+  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+  then go to build_raspi4 ->{
+    add ->{
+      #DISTRO ?= "poky"
+      DISTRO ?= "mydistro"
+      }
+    add->{
+      MACHINE ?= "embabi-machine"
+}
+    }
+  
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ $ bitbake embabi-machine
+  
