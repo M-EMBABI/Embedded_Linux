@@ -1,31 +1,28 @@
-<h2>Regex Pattern Explanation</h2>
+## Regex Pattern Explanation
 
-<p>The regex pattern <code>R"(^feature/TN-\d+/[a-zA-Z0-9_-]+$)"</code> is used to validate branch names in the format <code>feature/TN-123/branchname</code>. Below is a breakdown of each component:</p>
+The regex pattern `R"(^feature/TN-\d+/[a-zA-Z0-9_-]+$)"` is used to validate branch names in the format `feature/TN-123/branchname`. Below is a breakdown of each component:
 
-<ul>
-    <li><code>R"</code>: The <code>R</code> indicates a raw string in C++. In a raw string, backslashes are treated as literal characters, which allows for easier reading of regex patterns.</li>
+- **`R"`**: The `R` indicates a raw string in C++. In a raw string, backslashes are treated as literal characters, which allows for easier reading of regex patterns.
 
-    <li><code>^</code>: Asserts the start of the string. This means that whatever follows must appear at the beginning of the string.</li>
+- **`^`**: Asserts the start of the string. This means that whatever follows must appear at the beginning of the string.
 
-    <li><code>feature/</code>: Matches the literal string <code>feature/</code>, indicating the type of branch.</li>
+- **`feature/`**: Matches the literal string `feature/`, indicating the type of branch.
 
-    <li><code>TN-</code>: Matches the literal string <code>TN-</code>, which is part of the identifier.</li>
+- **`TN-`**: Matches the literal string `TN-`, which is part of the identifier.
 
-    <li><code>\d+</code>: Matches one or more digits. Here, <code>\d</code> represents any digit (equivalent to <code>[0-9]</code>), and the <code>+</code> signifies "one or more occurrences". This part captures the numeric identifier (e.g., <code>123</code>).</li>
+- **`\d+`**: Matches one or more digits. Here, `\d` represents any digit (equivalent to `[0-9]`), and the `+` signifies "one or more occurrences". This part captures the numeric identifier (e.g., `123`).
 
-    <li><code>/</code>: Matches the literal <code>/</code>, which separates the numeric identifier from the branch name.</li>
+- **`/`**: Matches the literal `/`, which separates the numeric identifier from the branch name.
 
-    <li><code>[a-zA-Z0-9_-]+</code>: This is a character class that matches one or more occurrences of:</li>
-    <ul>
-        <li><code>a-z</code>: Any lowercase letter from 'a' to 'z'.</li>
-        <li><code>A-Z</code>: Any uppercase letter from 'A' to 'Z'.</li>
-        <li><code>0-9</code>: Any digit from '0' to '9'.</li>
-        <li><code>_</code>: The underscore character.</li>
-        <li><code>-</code>: The hyphen character.</li>
-    </ul>
-    <li>This part captures the actual name of the branch, allowing alphanumeric characters, underscores, and hyphens.</li>
+- **`[a-zA-Z0-9_-]+`**: This is a character class that matches one or more occurrences of:
+    - `a-z`: Any lowercase letter from 'a' to 'z'.
+    - `A-Z`: Any uppercase letter from 'A' to 'Z'.
+    - `0-9`: Any digit from '0' to '9'.
+    - `_`: The underscore character.
+    - `-`: The hyphen character.
+    
+    This part captures the actual name of the branch, allowing alphanumeric characters, underscores, and hyphens.
 
-    <li><code>$</code>: Asserts the end of the string. This means that whatever precedes it must be at the end of the string.</li>
-</ul>
+- **`$`**: Asserts the end of the string. This means that whatever precedes it must be at the end of the string.
 
-<p>In summary, this regex pattern validates that a branch name follows the structure <code>feature/TN-123/branchname</code>, ensuring it starts with <code>feature/</code>, followed by <code>TN-</code>, a numeric identifier, and finally a valid branch name consisting of letters, digits, underscores, or hyphens.</p>
+In summary, this regex pattern validates that a branch name follows the structure `feature/TN-123/branchname`, ensuring it starts with `feature/`, followed by `TN-`, a numeric identifier, and finally a valid branch name consisting of letters, digits, underscores, or hyphens.
