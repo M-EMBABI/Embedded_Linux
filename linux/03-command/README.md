@@ -1,3 +1,3 @@
 <h1>first touch regex-email.txt and put all emails</h1>
 <h2>then right this command with this Regex </h2>
-<h3 style="font-size:60px;">$grep -E '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' regix-email.txt 1</h3>
+<h3>$grep -E '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' regix-email.txt 1</h3>
