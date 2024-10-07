@@ -1,0 +1,4 @@
+invalid-email.com
+another_valid.email@domain.co
+valid.email@example.com
+wrong@domain,com
