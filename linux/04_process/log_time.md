@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cron Task to Log Uptime</title>
   </head>
   <body>
@@ -56,6 +58,5 @@
     <p>
       Now, every Monday at 1:00 PM, the system uptime will be logged in your specified log file.
     </p>
-
   </body>
 </html>
