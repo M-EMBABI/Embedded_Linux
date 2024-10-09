@@ -19,6 +19,7 @@
       1: Every Monday (1 represents Monday in cron)
       /usr/bin/uptime: Command to log system uptime
       >> /path/to/your/logfile.log: Redirects the output to a log file, appending the results to it.
-
+      <p>
+      <hr>
   </body>
 </html>  
