@@ -20,7 +20,5 @@
       /usr/bin/uptime: Command to log system uptime
       >> /path/to/your/logfile.log: Redirects the output to a log file, appending the results to it.
       <hr>
-     
-    </p>
   </body>
 </html>  
