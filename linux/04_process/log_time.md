@@ -6,10 +6,10 @@
     <h1> task to log the uptime every monday on 1:00 pm </h1>
     <p>
       <b> Open the crontab editor: Run the following command in the terminal to open the crontab file for editing: </b>
-       <mark>$crontab -e</mark>
+       <strong>$crontab -e</strong>
       <hr>
       <b>Add the cron job: Add the following line to schedule the uptime logging task: </b>
-      <mark> 0 13 * * 1 /usr/bin/uptime >> /path/to/your/logfile.log </mark>
+      <strong> 0 13 * * 1 /usr/bin/uptime >> /path/to/your/logfile.log </strong>
       Here's what this means:
 
       0: At minute 0
@@ -24,4 +24,4 @@
       </b>
     </p>
   </body>
-</html>
+</html>  
