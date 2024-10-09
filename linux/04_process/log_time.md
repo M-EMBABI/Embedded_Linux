@@ -19,7 +19,9 @@
       /usr/bin/uptime: Command to log system uptime
       >> /path/to/your/logfile.log: Redirects the output to a log file, appending the results to it.
       <hr>
-      <b>Save and exit: After adding the line, save and exit the editor. If you're using nano, you can do this by pressing Ctrl + O to save and Ctrl + X to exit.</b>
+      <b>
+      Save and exit: After adding the line, save and exit the editor. If you're using nano, you can do this by pressing Ctrl + O to save and Ctrl + X to exit.
+      </b>
     </p>
   </body>
 </html>
