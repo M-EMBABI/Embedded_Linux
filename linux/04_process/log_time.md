@@ -10,7 +10,8 @@
       <hr>
       <b>Add the cron job: Add the following line to schedule the uptime logging task: </b>
       <strong> 0 13 * * 1 /usr/bin/uptime >> /path/to/your/logfile.log </strong>
-      Here's what this means:
+      <hr>
+      Here's what this means : 
 
       0: At minute 0
       13: At 13:00 (1:00 PM)
