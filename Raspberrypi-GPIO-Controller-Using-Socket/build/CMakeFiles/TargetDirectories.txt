@@ -1,0 +1,7 @@
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/ControlGPIO.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/edit_cache.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/rebuild_cache.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/list_install_components.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/install.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/install/local.dir
+/home/embabi/D/Raspberrypi-GPIO-Controller-Using-Socket/build/CMakeFiles/install/strip.dir
