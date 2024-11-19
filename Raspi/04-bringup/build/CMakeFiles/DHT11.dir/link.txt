@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/DHT11.dir/main.cpp.o CMakeFiles/DHT11.dir/csv/csv.cpp.o -o DHT11 

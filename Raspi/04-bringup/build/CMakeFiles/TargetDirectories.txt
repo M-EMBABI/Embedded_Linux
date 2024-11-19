@@ -1,7 +1,0 @@
-/home/pi4/project/build/CMakeFiles/install/strip.dir
-/home/pi4/project/build/CMakeFiles/install.dir
-/home/pi4/project/build/CMakeFiles/list_install_components.dir
-/home/pi4/project/build/CMakeFiles/edit_cache.dir
-/home/pi4/project/build/CMakeFiles/install/local.dir
-/home/pi4/project/build/CMakeFiles/rebuild_cache.dir
-/home/pi4/project/build/CMakeFiles/DHT11.dir
