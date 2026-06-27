@@ -1,21 +1,22 @@
-+
+
 #include <iostream>
+
+
+
+int getASCIIValue(char character){
+    return static_cast<int>(character);
+}
+
 
 int main()
 {
-    char x[128]={};
-    int i=0;
+    char c ;
+    std::cout<<"*******please enter your input*******"<<std::endl;
+    std::cin>>c;
     std::cout<<"---------------------"<<std::endl;
-    std::cout<<"askii code table is:"<<std::endl;
+    std::cout << "askii code for :" <<c << " -> " << getASCIIValue(c) << '\n';
     std::cout<<"---------------------"<<std::endl;
 
-    for(i=0;x[i]<=127;i++)
-    {   
-         std::cout<<x[i]<<"|"<<int(x[i])<<std::endl;
-        // x[i]=0;
-        // std::cin>> x[i] ;
-        // std::cout<< x[i] <<"|"<< int(x[i]) <<"\n" << std::endl;
-    }
-   
+
     return 0;
 }
