@@ -1,19 +1,25 @@
 
 #include <iostream>
+#include <algorithm>
 
-int main()
-{
-    int x,y,z,max;
-    std::cin>>x>>y>>z;
-    max=x;
-    if(x<y)
-    {
-        max=y;
+int max_num(int *num){
+    int val = *std::max_element(num,num+3);
+    return val;
+}
+
+void input(int arr[]){
+    int x,y,z;
+    std::cout<<"please enter your input : "<<std::endl;
+    for (int i=0 ; i<3 ; i++){
+        std::cout<<"num "<<i+1<<": ";
+        std::cin>>arr[i];
     }
-    if(y<z)
-    {
-        max=z;
-    }
-    std::cout<<"max num= "<<max<<std::endl;
-    return 0;
+
+}
+int main(){
+
+    int arr2[3];
+    input(arr2);
+    std::cout<<max_num(arr2)<<std::endl;
+    
 }
