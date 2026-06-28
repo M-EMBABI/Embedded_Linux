@@ -1,16 +1,20 @@
-#include<iostream>
+#include <iostream>
+
 int main()
 {
-    int x=0,z=0,sum=0;
-    std::cin>>x;
-    while(x!=0)
+    int number;
+    int sum = 0;
+
+    std::cout << "Enter an integer: ";
+    std::cin >> number;
+
+    while (number != 0)
     {
-        z=x%10;
-        sum=sum+z;
-        x=x/10;
-        
+        sum += number % 10; 
+        number /= 10;       
     }
-    std::cout<<sum<<std::endl;
+
+    std::cout << "Sum = " << sum << std::endl;
 
     return 0;
 }
