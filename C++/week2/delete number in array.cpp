@@ -1,23 +1,23 @@
 #include <iostream>
-int deleten(int arr[], int n, int l) 
-{
-   int i, newi = 0;
-   for (i = 0; i < n; i++)
-    {
-      if (i != l ) 
-      {
-         arr[newi] = arr[i];
-         newi++;
+
+
+
+
+int deletint(int arr[],int size ,int num ){
+   int newarr=0;
+   for(int i = 0 ; i< size ; i++){
+      if(i != num){
+         arr[newarr] = arr[i];
+         newarr++;
       }
    }
-   
-   return newi;
+   return newarr;
 }
 int main() 
 {
-   int n = 9;
-   int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-   int updatedArrayLength = deleten(arr, n, 2);
+   int arr[] = { 0, 2, 3, 4, 5, 6, 7, 8, 9 };
+   int size = sizeof(arr)/sizeof(arr[0]);
+   int updatedArrayLength = deletint(arr, size, 0);
    for (int i = 0; i < updatedArrayLength; i++) 
    {
      std:: cout << arr[i] << " ";
