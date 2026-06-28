@@ -1,6 +1,7 @@
 #include <iostream>
 #include <csignal>
-//
+
+
 void signalhandel(int signum){
     std::cout<<"interrupt signal("<<signum<<")receved\n";
     exit(signum);

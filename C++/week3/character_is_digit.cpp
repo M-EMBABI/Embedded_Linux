@@ -2,21 +2,20 @@
 #include <cctype> 
 
 class digit{
+
     public:
         char isdig(char ch){
-            if(isdigit(ch))
+            if(isdigit(ch)){
+                std::cout<<" it is digit"<<std::endl;
+            }else
             {
-                std::cout<<" is digit"<<std::endl;
+                std::cout<<" it is not digit"<<std::endl;                
             }
-            else {
-            std::cout<<"is not digit"<<std::endl;
-            }
-            return ch;
         }
 };
 
 int main()
 {
     digit d;
-    d.isdig('5');
+    d.isdig('g');
 }
