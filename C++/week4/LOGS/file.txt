@@ -1,3 +1,6 @@
-WARN : warning
+ERROR : embabi2222222
+ERROR : E
 INFO : INFO
-ERROR : KJHGF
+WARN : warning
+ERROR : dd
+ERROR : hello
